@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "../component/Banner";
 import Link from "next/link";
 
 const Page = () => {
+  const [userData, setUserData] = useState({ email: "", password: "" });
+  const handleOtp = () => {};
+  const handleSubmit = () => {};
+
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full h-auto">
@@ -21,6 +25,10 @@ const Page = () => {
             <input
               type="email"
               id="email"
+              value={userData.email}
+              onChange={(e) =>
+                setUserData({ ...userData, email: e.target.value })
+              }
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@gmail.com"
               required
@@ -36,7 +44,10 @@ const Page = () => {
             <input
               type="password"
               placeholder="Enter password"
-
+              value={userData.password}
+              onChange={(e) =>
+                setUserData({ ...userData, password: e.target.value })
+              }
               id="password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
@@ -44,7 +55,12 @@ const Page = () => {
           </div>
           <div className="flex items-start mb-6">
             <div className="flex items-center h-6 w-full">
-              <Link href={"/login"} className=" w-full text-right text-blue-500 underline-offset-2 underline">Already has a account?</Link>
+              <Link
+                href={"/login"}
+                className=" w-full text-right text-blue-500 underline-offset-2 underline"
+              >
+                Already has a account?
+              </Link>
             </div>
           </div>
           <button
