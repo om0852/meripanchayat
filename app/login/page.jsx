@@ -1,13 +1,38 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Banner from "../component/Banner";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Page = () => {
+  
+  const router = useRouter();
+  const [userData, setUserData] = useState({ email: "", password: ""});
+  const handleSubmit=async(e)=>{
+    e.preventDefault();
+    const response = await fetch(`/api/user/login`,{
+      method:"POST",
+      headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email:userData.email ,password:userData.password})
+    })
+    if(response.status==200){
+      toast.success("Login Successfully");
+      localStorage.setItem("email",userData.email)
+      router.push("/")
+    }
+    else{
+      toast.error("Invalid Credentials")
+
+    }
+  }
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full h-auto">
         <Banner />
-        <form className="max-w-sm mx-auto box-shadow w-[auto] h-[auto] px-10 py-16">
+        <form onSubmit={handleSubmit} className="max-w-sm mx-auto box-shadow w-[auto] h-[auto] px-10 py-16">
           <h1 className="w-full text-center h-8 font-semibold text-xl mb-6">
             Login to your account
           </h1>
@@ -20,6 +45,8 @@ const Page = () => {
             </label>
             <input
               type="email"
+              value={userData.email}
+              onChange={(e)=>setUserData({...userData,email:e.target.value})}
               id="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="name@gmail.com"
@@ -36,6 +63,8 @@ const Page = () => {
             <input
               type="password"
               id="password"
+              value={userData.password}
+              onChange={(e)=>setUserData({...userData,password:e.target.value})}
               placeholder="Enter password"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
