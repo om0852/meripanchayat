@@ -10,6 +10,12 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const router =useRouter();
   //defining login
+
+//logic for loader
+const [loader,setLoader]=useState(false);
+
+
+
   //logic for sidebar
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -23,8 +29,9 @@ export const AppProvider = ({ children }) => {
     phoneNo: "",
     name: "",
     profile: "",
-    
+
   });
+
   const handleUserData = (e,profile) => {
     if(e=="profile"){
       setUserData({...userData,profile:profile})
@@ -35,6 +42,7 @@ export const AppProvider = ({ children }) => {
   };
   //to get user current data
   const getUserData = async () => {
+    
     const response = await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -90,7 +98,9 @@ export const AppProvider = ({ children }) => {
         getUserData,
         openSidebar,
         setOpenSidebar,
-        setUserData
+        setUserData,
+        setLoader,
+        loader
       }}
     >
       {children}

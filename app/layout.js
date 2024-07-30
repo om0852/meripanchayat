@@ -5,6 +5,7 @@ import Header from "./component/Header";
 import { useContext } from "react";
 import { AppContext, AppProvider } from "./context/context";
 import Sidebar from "./component/Sidebar";
+import Provider from "./Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,16 +15,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="en">
       <body className={inter.className}>
         <AppProvider>
-        <Toaster />
+          <Toaster />
           <Header />
-          <Sidebar/>
+          <Sidebar />
           <div className="w-full max-h-[99vh]">
-          {children}
+            <Provider>{children}</Provider>
           </div>
         </AppProvider>
       </body>
