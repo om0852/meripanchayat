@@ -1,6 +1,8 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
+  
   const [userData, setUserData] = useState({ name: "", phoneNo: "",profile:"" });
 
   return (
@@ -54,4 +56,5 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
+// 

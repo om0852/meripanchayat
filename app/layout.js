@@ -3,7 +3,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import Header from "./component/Header";
 import { useContext } from "react";
-import { AppContext } from "./context/context";
+import { AppContext, AppProvider } from "./context/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,15 +13,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const data=  useContext(AppContext);
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster/>
-        
-        <Header/>
-        
-        {children}</body>
+        <Toaster />
+        <AppProvider>
+          <Header />
+          <div className="w-full max-h-[90vh] overflow-hidden">
+          {children}
+          </div>
+        </AppProvider>
+      </body>
     </html>
   );
 }
