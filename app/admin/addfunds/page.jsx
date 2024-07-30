@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -16,14 +17,29 @@ const Page = () => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value
+      [id]: value,
     }));
   };
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch(`/api/admin/panchayat_funds`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...formData   }),
+    });
+    if (response.status == 200) {
+      toast.success("Funds Added");
+    } else {
+      toast.error("Something Went Wrong");
+    }
+  };
   return (
     <div className="w-full h-full bg-gray-200">
       <div className="w-[80%] h-auto py-10 px-6 box-shadow bg-white mx-auto">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h1 className="w-full text-center h-8 font-semibold text-xl mb-6">
             Add Funds
           </h1>
@@ -146,8 +162,10 @@ const Page = () => {
             />
           </div>
           <div className="mb-5">
-            <button className="bg-green-700 text-white w-40 rounded-md h-10">Add</button>
-</div>
+            <button className="bg-green-700 text-white w-40 rounded-md h-10">
+              Add
+            </button>
+          </div>
         </form>
       </div>
     </div>
