@@ -10,6 +10,7 @@ const Header = () => {
         <img
         onClick={toggleSidebar}
           width="30"
+          className="cursor-pointer"
           height="30"
           src="https://img.icons8.com/ios-filled/50/menu--v1.png"
           alt="menu--v1"

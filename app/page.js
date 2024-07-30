@@ -17,7 +17,7 @@ export default function Home() {
   
   return (
     <>
-      <Sidebar toggleSidebar={toggleSidebar} openSidebar={openSidebar} />
+      {/* <Sidebar /> */}
       <div className="w-full h-[100vh]" onClick={()=>setOpenSidebar(false)}>
         Home
       </div>

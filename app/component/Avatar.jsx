@@ -1,33 +1,15 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import { useGlobalContext } from '../context/context';
 
 const Avatar = () => {
-    const [userData,setUserData]=useState(null);
-const fetchUserData=async()=>{
-    const response = await fetch("/api/user",{
-        method:"POST",
-        headers:{
-            'Content-Type': 'application/json'
-        },
-        body:JSON.stringify({email:localStorage.getItem("email")})
-    });
-    if(response.status==200){
-        const res=await response.json()
-        console.log(res)
-        setUserData(res)
-    }
-    
-}
-
-    useEffect(()=>{
-        fetchUserData();
-    },[])
+const {userData}=useGlobalContext();
   return (
     <div className='w-full h-full flex flex-col items-center'>
         <h2 className='w-full my-2 text-center'>Welcome to meri panchayat</h2>
-        <div className=' rounded-sm border-0 border-red-200 px-4 w-full py-4 h-auto flex flex-row items-center gap-2 '><img className='rounded-full' width={40} src='/merilogo.png'/><span className='text-black'>{userData?.name}</span></div>
+        <div className=' rounded-sm border-0 border-red-200 px-4 w-full py-4 h-auto flex flex-row items-center gap-2 '><img className='rounded-full h-[5vh] box-shadow' width={40} height={40} src={userData.profile==""?'/merilogo.png':userData.profile}/><span className='text-black'>{userData?.name}</span></div>
         <div className='flex flex-row w-full items-center justify-end px-0'>
-        <Link href="/edit" className='w-20vh bg-none border-2 px-10 py-2 rounded-md my-2 text-green-600'>Edit</Link>
+        <Link href="/edit" className='w-20vh hover:text-white hover:bg-sky-700 bg-none border-2 px-10 py-2 rounded-md my-2 text-green-600'>Edit</Link>
         </div>
     </div>
   )

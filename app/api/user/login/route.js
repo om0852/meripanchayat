@@ -1,8 +1,10 @@
 import User from "@/app/modals/User";
+import { connectToDB } from "@/app/utils/connection";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
+    await connectToDB();
     const { email, password } = await req.json();
     // const user
     const userlogin = await User.findOne({ email: email });
@@ -24,6 +26,7 @@ export async function POST(req) {
       );
     }
   } catch (error) {
+    console.log(error)
     return NextResponse.json({message:error.message},{status:400});
   }
 }

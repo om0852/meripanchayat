@@ -7,7 +7,7 @@ export async function POST(req) {
   try {
     const { email, password, name, otp } = await req.json();
     // const user
-    connectToDB();
+  await  connectToDB();
     const record = await Otp.findOne({ email, otp });
 
     if (!record) {

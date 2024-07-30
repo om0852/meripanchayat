@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import Header from "./component/Header";
 import { useContext } from "react";
 import { AppContext, AppProvider } from "./context/context";
+import Sidebar from "./component/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,13 +14,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster />
         <AppProvider>
+        <Toaster />
           <Header />
-          <div className="w-full max-h-[90vh] overflow-hidden">
+          <Sidebar/>
+          <div className="w-full max-h-[99vh]">
           {children}
           </div>
         </AppProvider>

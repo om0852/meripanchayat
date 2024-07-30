@@ -3,8 +3,10 @@ import React from "react";
 import Avatar from "./Avatar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useGlobalContext } from "../context/context";
 
-const Sidebar = ({ toggleSidebar,openSidebar }) => {
+const Sidebar = () => {
+  const {toggleSidebar,openSidebar}=useGlobalContext();
     const router = useRouter();
   let menuOptions = [
     {

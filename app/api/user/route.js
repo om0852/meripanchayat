@@ -10,7 +10,7 @@ export async function POST(req){
         if(!data){
             throw new Error("User Not Found")
         }
-        return NextResponse.json({name:data.name,email:data.email,number:data.number},{status:200})
+        return NextResponse.json({name:data.name,email:data.email,phoneNo:data.phoneNo,profile:data.profile||""},{status:200})
     } catch (error) {
         return NextResponse.json({message:"Invalid User",error:error.message},{status:404})
     }
@@ -24,7 +24,7 @@ export async function PUT(req){
             throw new Error("User Not Found")
         }
         await User.updateOne({email:email},{phoneNo,name,profile})
-        return NextResponse.json({message:"data updated"})
+        return NextResponse.json({message:"data updated"},{status:200})
     } catch (error) {
         return NextResponse.json({message:"Invalid User"},{status:404})
     }
