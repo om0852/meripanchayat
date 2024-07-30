@@ -23,6 +23,7 @@ export const AppProvider = ({ children }) => {
     phoneNo: "",
     name: "",
     profile: "",
+    
   });
   const handleUserData = (e,profile) => {
     if(e=="profile"){
@@ -86,6 +87,7 @@ export const AppProvider = ({ children }) => {
         updateUser,
         userData,
         toggleSidebar,
+        getUserData,
         openSidebar,
         setOpenSidebar,
         setUserData

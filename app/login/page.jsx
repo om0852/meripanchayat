@@ -4,11 +4,13 @@ import Banner from "../component/Banner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useGlobalContext } from "../context/context";
 
 const Page = () => {
   
   const router = useRouter();
   const [userData, setUserData] = useState({ email: "", password: ""});
+  const {getUserData}=useGlobalContext();
   const handleSubmit=async(e)=>{
     e.preventDefault();
     const response = await fetch(`/api/user/login`,{
@@ -21,6 +23,7 @@ const Page = () => {
     if(response.status==200){
       toast.success("Login Successfully");
       localStorage.setItem("email",userData.email)
+      getUserData();
       router.push("/")
     }
     else{

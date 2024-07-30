@@ -28,7 +28,7 @@ export async function POST(req) {
     }
 
     const user = await User.create({ email, password, userType: "user", name });
-    await Otp.delete({ email });
+    await Otp.deleteOne({ email });
     return NextResponse.json(
       { message: "Account Created Successfully" },
       { status: 200 }

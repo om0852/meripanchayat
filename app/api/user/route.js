@@ -10,7 +10,7 @@ export async function POST(req){
         if(!data){
             throw new Error("User Not Found")
         }
-        return NextResponse.json({name:data.name,email:data.email,phoneNo:data.phoneNo,profile:data.profile||""},{status:200})
+        return NextResponse.json({name:data.name,email:data.email,phoneNo:data.phoneNo,profile:data.profile||"",userType:data.userType},{status:200})
     } catch (error) {
         return NextResponse.json({message:"Invalid User",error:error.message},{status:404})
     }

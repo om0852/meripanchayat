@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Avatar from "./Avatar";
 import Link from "next/link";
@@ -6,8 +6,9 @@ import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../context/context";
 
 const Sidebar = () => {
-  const {toggleSidebar,openSidebar}=useGlobalContext();
-    const router = useRouter();
+  const { toggleSidebar, openSidebar, setOpenSidebar, setUserData } =
+    useGlobalContext();
+  const router = useRouter();
   let menuOptions = [
     {
       title: "Home",
@@ -41,12 +42,18 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="w-[35vh] h-[100vh] bg-white box-shadow" style={{
-        transition:"all .4s ease",
-        position:"absolute",
-        top:0,
-        left:openSidebar?0:"-60vh"
-    }}>
+    <div
+      className="w-[35vh] h-[100vh] bg-white box-shadow"
+      style={{
+        transition: "all .4s ease",
+        position: "absolute",
+        top: 0,
+        left: openSidebar ? 0 : "-60vh",
+      }}
+      onClick={() => {
+        setOpenSidebar(false);
+      }}
+    >
       <div className="w-full h-auto flex flex-row px-4 items-center text-black font-semibold border-b-2">
         <Avatar />
       </div>
@@ -69,7 +76,14 @@ const Sidebar = () => {
         );
       })}
       <div className="w-full h-auto flex flex-row justify-end px-2 py-4 items-center text-black font-semibold">
-        <button onClick={()=>{localStorage.removeItem("email");router.push("/login")}} className="w-[60%] h-14 rounded-md text-white gap-2 justify-end px-6 bg-red-500 flex flex-row items-center">
+        <button
+          onClick={() => {
+            localStorage.removeItem("email");
+            setUserData({ email: "", phoneNo: "", name: "", profile: "" });
+            router.push("/login");
+          }}
+          className="w-[60%] h-14 rounded-md text-white gap-2 justify-end px-6 bg-red-500 flex flex-row items-center"
+        >
           <img
             width="20"
             height="20"
