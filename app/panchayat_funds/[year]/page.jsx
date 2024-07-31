@@ -1,5 +1,6 @@
 "use client";
 import FundDetailCard from "@/app/component/FundDetailCard";
+import NoDataFound from "@/app/component/NoDataFound";
 import { useGlobalContext } from "@/app/context/context";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";

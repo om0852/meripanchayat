@@ -6,6 +6,7 @@ import { useGlobalContext } from "./context/context";
 import Header from "./component/Header";
 import Sidebar from "./component/Sidebar";
 import { usePathname } from "next/navigation";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 const Provider = ({ children }) => {
   const { setOpenSidebar, loader } = useGlobalContext();
   const pathname =usePathname();
@@ -17,7 +18,10 @@ const Provider = ({ children }) => {
       <Sidebar />
 
       <div onClick={() => setOpenSidebar(false)}>
-        {loader && <Loader />} {children}
+        {loader && <Loader />} 
+        <EdgeStoreProvider>
+        {children}
+        </EdgeStoreProvider>
       </div>
     </>
   );

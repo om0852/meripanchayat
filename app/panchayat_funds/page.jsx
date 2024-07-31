@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 import FundCard from "../component/FundCard";
+import NoDataFound from "../component/NoDataFound";
 
 const Page = () => {
   const { setOpenSidebar, setLoader } = useGlobalContext();
@@ -35,7 +36,7 @@ const Page = () => {
         className="w-full h-[80vh] py-8 overflow-x-hidden overflow-y-scroll "
         style={{ scrollbarWidth: "none" }}
       >
-        { fundsData&& fundsData.length == 0 && <NoDataFound />}
+        { fundsData&& fundsData.length == 0 && <NoDataFound/>}
 
         {fundsData
           ? fundsData.map((data, index) => {

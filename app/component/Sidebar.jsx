@@ -28,9 +28,17 @@ const Sidebar = () => {
       type: "user",
       img: "https://img.icons8.com/ios/50/coins--v1.png",
     },
+    
     {
       title: "Panchayat Income / Expenditure Funds",
       href: "/panchayat_funds/income_funds",
+      type: "user",
+      img: "https://img.icons8.com/ios/50/craft-work.png",
+    },
+    
+    {
+      title: "Documents",
+      href: "/documents",
       type: "user",
       img: "https://img.icons8.com/ios/50/craft-work.png",
     },
@@ -46,7 +54,7 @@ const Sidebar = () => {
       className="w-[35vh] h-[100vh] bg-white box-shadow"
       style={{
         transition: "all .4s ease",
-        position: "absolute",
+        position: "fixed",
         top: 0,
         left: openSidebar ? 0 : "-60vh",
       }}
