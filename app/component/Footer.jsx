@@ -27,7 +27,7 @@ const Footer = () => {
           </li>
           
         </ul>
-        <p class="text-center text-body-secondary py-4 "><span className="border-b-2 border-black">© 2024 Company, Inc</span></p>
+        <p class="text-center text-body-secondary py-4 "><span className="border-b-2 border-black"> 2024 Company Inc</span></p>
       </footer>
     </div>
   );
