@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useGlobalContext } from "../context/context";
+import LoginBanner from "../component/LoginBanner";
 
 const Page = () => {
   
@@ -36,6 +37,7 @@ const Page = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full h-auto">
+        <LoginBanner/>
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto box-shadow w-[auto] h-[auto] px-10 py-16">
           <h1 className="w-full text-center h-8 font-semibold text-xl mb-6">
             Login to your account

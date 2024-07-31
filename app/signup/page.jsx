@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
+import LoginBanner from "../component/LoginBanner";
 
 const Page = () => {
   const [openModal,setOpenModal]=useState(false);
@@ -64,7 +65,7 @@ setLoader(false)
     <>
      
       <div className="flex flex-col justify-center items-center w-full h-auto">
-
+<LoginBanner/>
         <div className="max-w-sm mx-auto box-shadow w-[auto] h-[auto] px-10 py-16">
           <h1 className="w-full text-center h-8 font-semibold text-xl mb-6">
             Create your account
