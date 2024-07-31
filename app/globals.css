@@ -3,6 +3,69 @@
 @tailwind utilities;
 
 /* HTML: <div class="loader"></div> */
+
+.container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo span {
+  font-size: 50px;
+  color: white;
+}
+.logo {
+  margin-right: 60px;
+  color: aqua;
+}
+
+.mainContainer {
+  height: 20vh;
+  margin: 0;
+  padding: 0;
+}
+.image-container {
+  width: 80%;
+}
+
+/* slider  */
+.slider {
+  width: 90%;
+  height: 40vh;
+  /* background-color: green; */
+  margin: auto;
+  position: relative;
+}
+.btn1 {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: 150px;
+  width: 100%;
+  gap: 20px;
+}
+.about-container {
+  /* display: flex; */
+  justify-content: space-between;
+}
+@media screen and(max-width:600px){
+  .about-container {
+  display: block;
+}
+}
+/* card  */
+.card1 {
+  width: 50%;
+  margin-right: 30px;
+  margin-left: 20px;
+}
+
+
 .loader {
   width: 50px;
   aspect-ratio: 1;

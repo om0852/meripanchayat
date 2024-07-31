@@ -33,14 +33,14 @@ const Sidebar = () => {
       title: "Panchayat Income / Expenditure Funds",
       href: "/panchayat_funds/income_funds",
       type: "user",
-      img: "https://img.icons8.com/ios/50/craft-work.png",
+      img: "https://img.icons8.com/?size=100&id=32314&format=png&color=000000",
     },
     
     {
       title: "Documents",
       href: "/documents",
       type: "user",
-      img: "https://img.icons8.com/ios/50/craft-work.png",
+      img: "https://img.icons8.com/?size=100&id=1395&format=png&color=000000",
     },
     {
       title: "Nearby Services",
@@ -49,10 +49,12 @@ const Sidebar = () => {
       img: "https://img.icons8.com/ios/50/services--v1.png",
     },
   ];
+  
   return (
     <div
       className="w-[35vh] h-[100vh] bg-white box-shadow"
       style={{
+        zIndex:1000,
         transition: "all .4s ease",
         position: "fixed",
         top: 0,
@@ -62,7 +64,7 @@ const Sidebar = () => {
         setOpenSidebar(false);
       }}
     >
-      <div className="w-full h-auto flex flex-row px-4 items-center text-black font-semibold border-b-2">
+      <div className="  w-full h-auto flex flex-row px-4 items-center text-black font-semibold border-b-2">
         <Avatar />
       </div>
       {menuOptions.map((data, index) => {
