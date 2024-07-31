@@ -6,55 +6,95 @@ import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../context/context";
 
 const Sidebar = () => {
-  const { toggleSidebar, openSidebar, setOpenSidebar, setUserData } =
+  const { toggleSidebar, language,openSidebar, setOpenSidebar, setUserData } =
     useGlobalContext();
   const router = useRouter();
-  let menuOptions = [
-    {
-      title: "Home",
-      href: "/",
-      type: "user",
-      img: "https://img.icons8.com/ios/50/home--v1.png",
-    },
-    {
-      title: "About Panchayat",
-      href: "/about",
-      type: "user",
-      img: "https://img.icons8.com/material-outlined/24/about.png",
-    },
-    {
-      title: "Panchayat Funds",
-      href: "/panchayat_funds",
-      type: "user",
-      img: "https://img.icons8.com/ios/50/coins--v1.png",
-    },
-    
-    {
-      title: "Panchayat Income / Expenditure Funds",
-      href: "/panchayat_funds/income_funds",
-      type: "user",
-      img: "https://img.icons8.com/?size=100&id=32314&format=png&color=000000",
-    },
-    
-    {
-      title: "Documents",
-      href: "/documents",
-      type: "user",
-      img: "https://img.icons8.com/?size=100&id=1395&format=png&color=000000",
-    },
-    {
-      title: "Nearby Services",
-      href: "/nearby_services",
-      type: "user",
-      img: "https://img.icons8.com/ios/50/services--v1.png",
-    },
-  ];
-  
+  let menuOptions = {
+    english: [
+      {
+        title: "Home",
+        href: "/",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/home--v1.png",
+      },
+      {
+        title: "About Panchayat",
+        href: "/about",
+        type: "user",
+        img: "https://img.icons8.com/material-outlined/24/about.png",
+      },
+      {
+        title: "Panchayat Funds",
+        href: "/panchayat_funds",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/coins--v1.png",
+      },
+
+      {
+        title: "Panchayat Income / Expenditure Funds",
+        href: "/panchayat_funds/income_funds",
+        type: "user",
+        img: "https://img.icons8.com/?size=100&id=32314&format=png&color=000000",
+      },
+
+      {
+        title: "Documents",
+        href: "/documents",
+        type: "user",
+        img: "https://img.icons8.com/?size=100&id=1395&format=png&color=000000",
+      },
+      {
+        title: "Nearby Services",
+        href: "/nearby_services",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/services--v1.png",
+      },
+    ],
+    marathi: [
+      {
+        title: "मुख्य पृष्ठ",
+        href: "/",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/home--v1.png",
+      },
+      {
+        title: "पंचायत बद्दल",
+        href: "/about",
+        type: "user",
+        img: "https://img.icons8.com/material-outlined/24/about.png",
+      },
+      {
+        title: "पंचायत निधी",
+        href: "/panchayat_funds",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/coins--v1.png",
+      },
+      {
+        title: "पंचायत उत्पन्न / खर्च निधी",
+        href: "/panchayat_funds/income_funds",
+        type: "user",
+        img: "https://img.icons8.com/?size=100&id=32314&format=png&color=000000",
+      },
+      {
+        title: "दस्तऐवज",
+        href: "/documents",
+        type: "user",
+        img: "https://img.icons8.com/?size=100&id=1395&format=png&color=000000",
+      },
+      {
+        title: "जवळच्या सेवा",
+        href: "/nearby_services",
+        type: "user",
+        img: "https://img.icons8.com/ios/50/services--v1.png",
+      },
+    ],
+  };
+
   return (
     <div
       className="w-[35vh] h-[100vh] bg-white box-shadow"
       style={{
-        zIndex:1000,
+        zIndex: 1000,
         transition: "all .4s ease",
         position: "fixed",
         top: 0,
@@ -67,7 +107,7 @@ const Sidebar = () => {
       <div className="  w-full h-auto flex flex-row px-4 items-center text-black font-semibold border-b-2">
         <Avatar />
       </div>
-      {menuOptions.map((data, index) => {
+      {menuOptions[language].map((data, index) => {
         return (
           <Link
             href={data.href}

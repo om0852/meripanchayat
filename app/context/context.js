@@ -8,13 +8,13 @@ export const AppContext = createContext();
 
 //provider needed
 export const AppProvider = ({ children }) => {
-  const router =useRouter();
+  const router = useRouter();
   //defining login
 
-//logic for loader
-const [loader,setLoader]=useState(false);
+  //logic for loader
+  const [language, setLanguage] = useState("marathi");
 
-
+  const [loader, setLoader] = useState(false);
 
   //logic for sidebar
   const [openSidebar, setOpenSidebar] = useState(false);
@@ -29,20 +29,17 @@ const [loader,setLoader]=useState(false);
     phoneNo: "",
     name: "",
     profile: "",
-
   });
 
-  const handleUserData = (e,profile) => {
-    if(e=="profile"){
-      setUserData({...userData,profile:profile})
-    }
-    else{
+  const handleUserData = (e, profile) => {
+    if (e == "profile") {
+      setUserData({ ...userData, profile: profile });
+    } else {
       setUserData({ ...userData, [e.target.name]: e.target.value });
     }
   };
   //to get user current data
   const getUserData = async () => {
-    
     const response = await fetch("/api/user", {
       method: "POST",
       headers: {
@@ -52,10 +49,9 @@ const [loader,setLoader]=useState(false);
     });
     if (response.status == 200) {
       const res = await response.json();
-      console.log(res)
+      console.log(res);
       setUserData(res);
-    }
-    else{
+    } else {
       // toast.error("check your internet connection")
       // router.push("/login")
     }
@@ -65,7 +61,6 @@ const [loader,setLoader]=useState(false);
   }, []);
 
   const updateUser = async () => {
-    
     const response = await fetch("/api/user", {
       method: "PUT",
       headers: {
@@ -81,7 +76,7 @@ const [loader,setLoader]=useState(false);
     if (response.status == 200) {
       const res = await response.json();
       toast.success("Update Successfullly");
-      router.push("/")
+      router.push("/");
       getUserData();
     } else {
       toast.error("Check your internet connection");
@@ -100,7 +95,9 @@ const [loader,setLoader]=useState(false);
         setOpenSidebar,
         setUserData,
         setLoader,
-        loader
+        loader,
+        setLanguage,
+        language,
       }}
     >
       {children}
