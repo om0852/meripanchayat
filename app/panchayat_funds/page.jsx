@@ -5,7 +5,7 @@ import FundCard from "../component/FundCard";
 
 const Page = () => {
   const { setOpenSidebar, setLoader } = useGlobalContext();
-  const [fundsData, setFundsData] = useState(null);
+  const [fundsData, setFundsData] = useState([]);
   const fetchFundsData = async () => {
     setLoader(true);
     const response = await fetch(`/api/user/panchayat_funds`, {
@@ -35,7 +35,7 @@ const Page = () => {
         className="w-full h-[80vh] py-8 overflow-x-hidden overflow-y-scroll "
         style={{ scrollbarWidth: "none" }}
       >
-        {fundsData.length == 0 && <NoDataFound />}
+        { fundsData&& fundsData.length == 0 && <NoDataFound />}
 
         {fundsData
           ? fundsData.map((data, index) => {

@@ -29,8 +29,8 @@ const Sidebar = () => {
       img: "https://img.icons8.com/ios/50/coins--v1.png",
     },
     {
-      title: "Panchayat Developement Work",
-      href: "/panchayat_developement_work",
+      title: "Panchayat Income / Expenditure Funds",
+      href: "/panchayat_funds/income_funds",
       type: "user",
       img: "https://img.icons8.com/ios/50/craft-work.png",
     },

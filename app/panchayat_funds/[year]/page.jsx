@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Page = ({ params }) => {
-  const [fundsData, setFundsData] = useState(null);
+  const [fundsData, setFundsData] = useState([]);
   const { setOpenSidebar, setLoader, userData } = useGlobalContext();
   const fetchFundsData = async () => {
     setLoader(true);
@@ -45,7 +45,7 @@ const Page = ({ params }) => {
         ) : (
           ""
         )}{" "}
-        {fundsData.length == 0 && <NoDataFound />}
+        {fundsData && fundsData.length == 0 && <NoDataFound />}
         {fundsData &&
           fundsData.map((data, index) => {
             return (

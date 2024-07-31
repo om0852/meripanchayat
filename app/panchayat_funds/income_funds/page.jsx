@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
-  const [fundsData, setFundsData] = useState(null);
+  const [fundsData, setFundsData] = useState([]);
   const [selectYear, setSelectYear] = useState(2024);
   const { setOpenSidebar, setLoader, userData } = useGlobalContext();
 

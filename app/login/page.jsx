@@ -75,9 +75,12 @@ const Page = () => {
               required
             />
           </div>
-          <div className="flex items-start mb-6">
+          <div className="flex flex-col gap-4 items-start mb-6">
             <div className="flex items-center h-6 w-full">
               <Link href={"/signup"} className=" w-full text-right text-purple-500 underline-offset-2 underline">Create a account</Link>
+            </div>
+            <div className="flex items-center h-6 w-full">
+              <Link href={"/login/forget_password"} className=" w-full text-right text-red-500 underline-offset-2 underline">Forget Password?</Link>
             </div>
           </div>
           <button

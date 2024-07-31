@@ -56,8 +56,8 @@ const [loader,setLoader]=useState(false);
       setUserData(res);
     }
     else{
-      toast.error("check your internet connection")
-      router.push("/login")
+      // toast.error("check your internet connection")
+      // router.push("/login")
     }
   };
   useEffect(() => {

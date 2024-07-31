@@ -1,4 +1,5 @@
 import Otp from "@/app/modals/Otp";
+import { connectToDB } from "@/app/utils/connection";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
@@ -6,6 +7,7 @@ export async function POST(req) {
   const { email } = await req.json();
 
   try {
+    await connectToDB();
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
