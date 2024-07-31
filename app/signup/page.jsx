@@ -14,6 +14,7 @@ const Page = () => {
     if(userData.email==""){
       return toast.error("Enter a valid email")
     }
+    setLoader(true)
     const response = await fetch('/api/user/otp', {
       method: 'POST',
       headers: {
@@ -28,6 +29,7 @@ if(response.status==200){
 else{
   toast.error("Enter a valid email")
 }
+setLoader(false)
   };
   const handleSubmit = async() => {
     if(userData.email==""){
@@ -39,6 +41,7 @@ else{
     if(userData.name=="" && userData.name.length<3){
       return toast.error("Enter a valid name or name length must be greater than 2")
     }
+    setLoader(true)
     const response = await fetch('/api/user/signup', {
       method: 'POST',
       headers: {
@@ -55,6 +58,7 @@ if(response.status==200){
 else{
   toast.error(res.message)
 }
+setLoader(false)
   };
 
   return (

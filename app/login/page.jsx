@@ -10,9 +10,10 @@ const Page = () => {
   
   const router = useRouter();
   const [userData, setUserData] = useState({ email: "", password: ""});
-  const {getUserData}=useGlobalContext();
+  const {getUserData,setLoader}=useGlobalContext();
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    setLoader(true)
     const response = await fetch(`/api/user/login`,{
       method:"POST",
       headers: {
@@ -30,6 +31,7 @@ const Page = () => {
       toast.error("Invalid Credentials")
 
     }
+    setLoader(false)
   }
   return (
     <>

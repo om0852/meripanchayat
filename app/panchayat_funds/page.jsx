@@ -4,9 +4,10 @@ import { useGlobalContext } from "../context/context";
 import FundCard from "../component/FundCard";
 
 const Page = () => {
-  const { setOpenSidebar } = useGlobalContext();
+  const { setOpenSidebar, setLoader } = useGlobalContext();
   const [fundsData, setFundsData] = useState(null);
   const fetchFundsData = async () => {
+    setLoader(true);
     const response = await fetch(`/api/user/panchayat_funds`, {
       method: "get",
     });
@@ -14,10 +15,11 @@ const Page = () => {
       const res = await response.json();
       setFundsData(res);
     }
+    setLoader(false);
   };
-  useEffect(()=>{
-fetchFundsData();
-  },[])
+  useEffect(() => {
+    fetchFundsData();
+  }, []);
   return (
     <div
       onClick={() => setOpenSidebar(false)}
@@ -33,6 +35,8 @@ fetchFundsData();
         className="w-full h-[80vh] py-8 overflow-x-hidden overflow-y-scroll "
         style={{ scrollbarWidth: "none" }}
       >
+        {fundsData.length == 0 && <NoDataFound />}
+
         {fundsData
           ? fundsData.map((data, index) => {
               return <FundCard data={data} key={index} />;
