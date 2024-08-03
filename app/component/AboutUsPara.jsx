@@ -89,7 +89,7 @@ const AboutUsPara = () => {
               <p className="text-lg mb-6">
                 In a bid to improve accessibility and convenience, the
                 Grampanchayat of Chandgaon is launching a new mobile app. This
-                app will provide comprehensive information about the village's
+                app will provide comprehensive information about the village&apos;s
                 facilities, including locations and details of toilets, parking
                 areas, schools, Anganwadis, the Common Service Center, ATMs, the
                 police station, banks, the petrol pump, the railway station, and
