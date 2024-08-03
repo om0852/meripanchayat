@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* HTML: <div class="loader"></div> */
+/* HTML: <div className="loader"></div> */
 
 .container {
   max-width: 100%;

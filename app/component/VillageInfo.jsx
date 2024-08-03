@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import { useGlobalContext } from "../context/context";
 
 const VillageInfo = () => {
-  const {language}=useGlobalContext();
+  const { language } = useGlobalContext();
   return (
     <>
-      <div className="mainContainer px-4">
+      <div className="py-10 px-4 mb-5">
         {language == "english" ? (
-          <p className="px-4 py-4">
+          <p className="px-4 py-4 capitalize">
             {" "}
             <span className="text-black font-semibold text-red-600 text-xl">
               Village Panchayat
@@ -27,7 +27,7 @@ const VillageInfo = () => {
             <span className="text-black font-semibold text-red-600 text-xl">
               Zilla Parishad
             </span>
-            :Sambhaji nagar
+            :Sambhaji Nagar
           </p>
         ) : (
           <p className="px-4 py-4">
@@ -51,6 +51,21 @@ const VillageInfo = () => {
               जिला परिषद
             </span>
             : संभाजी नगर
+          </p>
+        )}
+        {language == "english" ? (
+          <p className="card-text px-4 ">
+            <p className="font-bold"> Sarpanch Details:-</p>
+            Name:-Manisha Ganesh Thengde<br></br>
+            Mobile no :-9673338564<br></br>
+            Email id :- ganstgda@gmail.com<br></br>
+          </p>
+        ) : (
+          <p className="card-text px-4 ">
+            <p className="font-bold">सरपंच विवरण:-</p>
+            नाम:- मनीषा गणेश थेंगड़े<br></br>
+            मोबाइल नंबर:- 9673338564<br></br>
+            ईमेल आईडी:- ganstgda@gmail.com<br></br>
           </p>
         )}
         <hr />

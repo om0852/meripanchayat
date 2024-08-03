@@ -57,7 +57,8 @@ const FundDetailCard = ({ data, year }) => {
         <span>
           <span className="font-bold text-black">Actual Expenditure:</span>
           <span className="text-red-700 font-bold">
-          ₹{data.actual_expenditure}
+          ₹
+          {data.actual_expenditure}
           </span>
         </span>
       </div>

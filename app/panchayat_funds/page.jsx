@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 import FundCard from "../component/FundCard";
 import NoDataFound from "../component/NoDataFound";
+import Link from "next/link";
 
 const Page = () => {
   const { setOpenSidebar, setLoader, language } = useGlobalContext();
@@ -26,6 +27,19 @@ const Page = () => {
       onClick={() => setOpenSidebar(false)}
       className="w-full h-[90vh] overflow-hidden"
     >
+       <Link
+        href={"/admin/addfunds"}
+        className="w-[10vh] h-[10vh]  fixed bottom-10 right-8"
+        style={{ borderRadius: "50%" }}
+      >
+        <img
+          width="90"
+          height="90"
+          className="hover:rotate-90 transition-all duration-200"
+          src="https://img.icons8.com/color/48/plus--v1.png"
+          alt="plus--v1"
+        />
+      </Link>
       {language == "english" ? (
         <h1 className="w-full h-16 border-y-2 border-gray-400 flex flex-row items-center justify-center ">
           Funds Details
