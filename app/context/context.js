@@ -12,7 +12,7 @@ export const AppProvider = ({ children }) => {
   //defining login
 
   //logic for loader
-  const [language, setLanguage] = useState("marathi");
+  const [language, setLanguage] = useState("english");
 
   const [loader, setLoader] = useState(false);
 

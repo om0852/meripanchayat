@@ -6,8 +6,14 @@ import { useRouter } from "next/navigation";
 import { useGlobalContext } from "../context/context";
 
 const Sidebar = () => {
-  const { toggleSidebar, language,openSidebar, setOpenSidebar, setUserData } =
-    useGlobalContext();
+  const {
+    toggleSidebar,
+    language,
+    openSidebar,
+    setLanguage,
+    setOpenSidebar,
+    setUserData,
+  } = useGlobalContext();
   const router = useRouter();
   let menuOptions = {
     english: [
@@ -140,7 +146,7 @@ const Sidebar = () => {
             src="https://img.icons8.com/ios/50/exit--v1.png"
             alt="exit--v1"
           />
-          Log Out
+          {language == "english" ? " Logout" : "लॉग आउट"}{" "}
         </button>
       </div>
     </div>

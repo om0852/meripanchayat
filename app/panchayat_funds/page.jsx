@@ -5,7 +5,7 @@ import FundCard from "../component/FundCard";
 import NoDataFound from "../component/NoDataFound";
 
 const Page = () => {
-  const { setOpenSidebar, setLoader } = useGlobalContext();
+  const { setOpenSidebar, setLoader, language } = useGlobalContext();
   const [fundsData, setFundsData] = useState([]);
   const fetchFundsData = async () => {
     setLoader(true);
@@ -26,17 +26,29 @@ const Page = () => {
       onClick={() => setOpenSidebar(false)}
       className="w-full h-[90vh] overflow-hidden"
     >
-      <h1 className="w-full h-16 border-y-2 border-gray-400 flex flex-row items-center justify-center ">
-        Funds Details
-      </h1>
-      <h1 className="w-full h-20  text-gray-400 flex flex-row items-center justify-center ">
-        View list of Funds Received
-      </h1>
+      {language == "english" ? (
+        <h1 className="w-full h-16 border-y-2 border-gray-400 flex flex-row items-center justify-center ">
+          Funds Details
+        </h1>
+      ) : (
+        <h1 className="w-full h-16 border-y-2 border-gray-400 flex flex-row items-center justify-center">
+          निधि विवरण
+        </h1>
+      )}
+      {language == "english" ? (
+        <h1 className="w-full h-20  text-gray-400 flex flex-row items-center justify-center ">
+          View list of Funds Received
+        </h1>
+      ) : (
+        <h1 className="w-full h-20 text-gray-400 flex flex-row items-center justify-center">
+          प्राप्त निधियों की सूची देखें
+        </h1>
+      )}
       <div
         className="w-full h-[80vh] py-8 overflow-x-hidden overflow-y-scroll "
         style={{ scrollbarWidth: "none" }}
       >
-        { fundsData&& fundsData.length == 0 && <NoDataFound/>}
+        {fundsData && fundsData.length == 0 && <NoDataFound />}
 
         {fundsData
           ? fundsData.map((data, index) => {

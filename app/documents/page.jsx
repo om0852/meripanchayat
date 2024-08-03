@@ -6,9 +6,9 @@ import { useGlobalContext } from "../context/context";
 
 const Page = () => {
   const [document, setDocument] = useState([]);
-  const {setLoader}=useGlobalContext();
+  const { setLoader,language } = useGlobalContext();
   const fetchData = async () => {
-    setLoader(true)
+    setLoader(true);
     const data = await fetch("api/admin/document", {
       method: "get",
     });
@@ -17,22 +17,36 @@ const Page = () => {
       console.log(res);
       setDocument(res);
     }
-    setLoader(false)
+    setLoader(false);
   };
   useEffect(() => {
     fetchData();
   }, []);
   return (
     <div className="w-full h-[80vh] overflow-hidden flex flex-col items-center my-4  ">
-        <Link href={"/documents/upload"} className="w-[10vh] h-[10vh]  fixed bottom-10 right-8" style={{borderRadius:"50%"}}><img  width="90" height="90" className="hover:rotate-90 transition-all duration-200" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/></Link>
+      <Link
+        href={"/documents/upload"}
+        className="w-[10vh] h-[10vh]  fixed bottom-10 right-8"
+        style={{ borderRadius: "50%" }}
+      >
+        <img
+          width="90"
+          height="90"
+          className="hover:rotate-90 transition-all duration-200"
+          src="https://img.icons8.com/color/48/plus--v1.png"
+          alt="plus--v1"
+        />
+      </Link>
+      {language == "english" ? (
         <h1 className="my-6 text-2xl font-medium">Documents</h1>
-        <div className="flex flex-col items-center my-0 overflow-y-auto">
-      {document.map((data, index) => {
+      ) : (
+        <h1 className="my-6 text-2xl font-medium">दस्तावेज़</h1>
+      )}{" "}
+      <div className="flex flex-col items-center my-0 overflow-y-auto">
+        {document.map((data, index) => {
           return <DocumentCard key={index} data={data} />;
         })}
-      
-        </div>
-      
+      </div>
     </div>
   );
 };
