@@ -4,11 +4,13 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
 import LoginBanner from "../component/LoginBanner";
+import { useGlobalContext } from "../context/context";
 
 const Page = () => {
   const [openModal,setOpenModal]=useState(false);
   const router = useRouter();
   const [otp,setOtp]=useState("")
+  const {setLoader}=useGlobalContext()
   const [userData, setUserData] = useState({ email: "", password: "",name:"" });
   const handleOtp =async () => {
     if(userData.email==""){
