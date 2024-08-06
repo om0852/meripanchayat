@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context/context";
 
 const Page = () => {
   const [document, setDocument] = useState([]);
-  const { setLoader,language } = useGlobalContext();
+  const { setLoader,language ,userData} = useGlobalContext();
   const fetchData = async () => {
     setLoader(true);
     const data = await fetch("api/admin/document", {
@@ -24,7 +24,7 @@ const Page = () => {
   }, []);
   return (
     <div className="w-full h-[80vh] overflow-hidden flex flex-col items-center my-4  ">
-      <Link
+     {userData.userType=="admin" && <Link
         href={"/documents/upload"}
         className="w-[10vh] h-[10vh]  fixed bottom-10 right-8"
         style={{ borderRadius: "50%" }}
@@ -36,7 +36,7 @@ const Page = () => {
           src="https://img.icons8.com/color/48/plus--v1.png"
           alt="plus--v1"
         />
-      </Link>
+      </Link>}
       {language == "english" ? (
         <h1 className="my-6 text-2xl font-medium">Documents</h1>
       ) : (
