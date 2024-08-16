@@ -6,11 +6,14 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useGlobalContext } from "../context/context";
 import LoginBanner from "../component/LoginBanner";
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Using react-icons for eye icons
 
 const Page = () => {
   
   const router = useRouter();
   const [userData, setUserData] = useState({ email: "", password: ""});
+  const [showPassword, setShowPassword] = useState(false);
+
   const {getUserData,setLoader}=useGlobalContext();
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -34,6 +37,9 @@ const Page = () => {
     }
     setLoader(false)
   }
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <>
       <div className="flex flex-col justify-center items-center w-full h-auto">
@@ -66,15 +72,24 @@ const Page = () => {
             >
               Your password
             </label>
-            <input
-              type="password"
-              id="password"
-              value={userData.password}
-              onChange={(e)=>setUserData({...userData,password:e.target.value})}
-              placeholder="Enter password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required
-            />
+            <div className="relative w-full">
+      <input
+        type={showPassword ? "text" : "password"}
+        id="password"
+        value={userData.password}
+        onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+        placeholder="Enter password"
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-100 dark:border-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        required
+      />
+      <button
+        type="button"
+        className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+        onClick={togglePasswordVisibility}
+      >
+        {showPassword ? <FaEyeSlash /> : <FaEye />}
+      </button>
+    </div>
           </div>
           <div className="flex flex-col gap-4 items-start mb-6">
             <div className="flex items-center h-6 w-full">
