@@ -6,7 +6,7 @@ import NoDataFound from "../component/NoDataFound";
 import Link from "next/link";
 
 const Page = () => {
-  const { setOpenSidebar, setLoader, language } = useGlobalContext();
+  const { setOpenSidebar, setLoader, language ,userData} = useGlobalContext();
   const [fundsData, setFundsData] = useState([]);
   const fetchFundsData = async () => {
     setLoader(true);
@@ -27,7 +27,7 @@ const Page = () => {
       onClick={() => setOpenSidebar(false)}
       className="w-full h-[90vh] overflow-hidden"
     >
-       <Link
+     {userData.userType=="admin" && <Link
         href={"/admin/addfunds"}
         className="w-[10vh] h-[10vh]  fixed bottom-10 right-8"
         style={{ borderRadius: "50%" }}
@@ -39,7 +39,7 @@ const Page = () => {
           src="https://img.icons8.com/color/48/plus--v1.png"
           alt="plus--v1"
         />
-      </Link>
+      </Link>}
       {language == "english" ? (
         <h1 className="w-full h-16 border-y-2 border-gray-400 flex flex-row items-center justify-center ">
           Funds Details
